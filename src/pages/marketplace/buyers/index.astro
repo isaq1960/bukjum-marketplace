@@ -1,5 +1,36 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { endpoint } from '../../data.js';
+import Base from '../layouts/Base.astro';
 ---
-<Base title="Buyer enquiries & quotations | Bukjum" description="Request a quotation for recycled PP, HDPE or PET flakes. Minimum order 10 tonnes."><section class="page-hero"><div class="container"><p class="eyebrow">FOR INDUSTRIAL & WHOLESALE BUYERS</p><h1>Let's find the right<br /><em>material for you.</em></h1><p>Tell us your material, volume and destination. We'll confirm price and availability in a quotation.</p></div></section><section class="section"><div class="container enquiry-grid"><div><p class="eyebrow">BEFORE YOU ENQUIRE</p><h2>Good to know<br /><em>up front.</em></h2><ul class="check-list"><li>Minimum order is 10 tonnes.</li><li>Indicative prices are per tonne; final pricing is confirmed by quotation.</li><li>Flakes are bagged, unwashed and require additional cleaning by the buyer.</li><li>Delivery is available within Nigeria. Share your destination for confirmation.</li><li>Exact product sizes and PET/HDPE production split are not yet confirmed.</li></ul><div class="buyer-note"><strong>Already supplying buyers</strong><p>The founding supplier currently serves Chinese firms in Lagos and Ogun States.</p></div></div><div class="form-card"><h2>Request a quotation</h2><p>Include your planned quantity and delivery location for a useful response.</p>{endpoint ? <form action={endpoint} method="POST"><input type="hidden" name="_subject" value="Bukjum buyer quotation request" /><label>Name<input name="name" autocomplete="name" required /></label><label>Business email<input name="email" type="email" autocomplete="email" required /></label><label>Company<input name="company" autocomplete="organization" /></label><div class="form-row"><label>Material<select name="material" required><option value="">Choose material</option><option>PP flakes</option><option>HDPE flakes</option><option>PET flakes</option><option>More than one</option></select></label><label>Quantity (tonnes)<input name="quantity" type="number" min="10" step="1" placeholder="10 or more" required /></label></div><label>Delivery location<input name="location" placeholder="City / State, Nigeria" required /></label><label>Requirements<textarea name="requirements" rows="4" placeholder="Intended use, preferred timing, or other requirements"></textarea></label><label class="consent"><input type="checkbox" name="acknowledged_unwashed" required /><span>I understand the flakes are unwashed and require additional cleaning.</span></label><button class="button button-primary" type="submit">Send quotation request <span>↗</span></button><small>Prices and availability are subject to confirmation.</small></form> : <div class="form-pending"><strong>Online enquiry form needs setup</strong><p>Formspree endpoint ownership and testing have not been confirmed, so online submission is disabled. Bukjum contact details also need confirmation before this page can accept enquiries.</p><small>Configure and test the verified Formspree endpoint, or add a confirmed contact address before launch.</small></div>}</div></div></section></Base>
+
+<Base title="Recycled Materials Marketplace | Bukjum" description="Browse clean, recycled plastic materials and connect with trusted local suppliers in Nigeria.">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">RECYCLED MATERIALS MARKETPLACE</p>
+      <h1>Better connections for<br /><em>circular materials.</em></h1>
+      <p>A practical link between recycled plastic suppliers and the businesses that use their materials.</p>
+      
+      <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <a href="/marketplace/products" class="button button-primary">Browse Materials</a>
+        <a href="/marketplace/buyers" class="button button-secondary">Request Quotation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Explore Marketplace Portals</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px;">
+          <h3>For Industrial Buyers</h3>
+          <p>Request quotations for bulk PET, HDPE, and PP flakes (10+ tonnes).</p>
+          <a href="/marketplace/buyers">Enquire as a Buyer →</a>
+        </div>
+        <div style="border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px;">
+          <h3>For Plastic Suppliers</h3>
+          <p>Supply collected plastic aggregates and partner with verified buyers.</p>
+          <a href="/marketplace/suppliers">Supply Materials →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://bukjum.com',
+  site: 'https://marketplace.bukjum.com',
   output: 'static'
 });

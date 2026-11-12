@@ -23,13 +23,16 @@ import { products } from '../../data.js';
     <div class="container">
 
       <div class="catalogue-grid">
+
         {products.map((p, i) => (
           <a
             href={`/products/${p.slug}/`}
-            class={`catalogue-card ${p.color} catalogue-card-clickable`}
-            aria-label={`View details for ${p.name}`}
+            class={`catalogue-card ${p.color} catalogue-card-link`}
+            aria-label={`View ${p.name} product details`}
           >
-            <span class="product-index">0{i + 1} / MATERIAL</span>
+            <span class="product-index">
+              0{i + 1} / MATERIAL
+            </span>
 
             <div class="flake-art" aria-hidden="true">
               <span></span>
@@ -52,11 +55,9 @@ import { products } from '../../data.js';
               Unwashed · Bagged · 10-tonne minimum
             </p>
 
-            <span class="button button-dark">
-              Product details <span>↗</span>
-            </span>
           </a>
         ))}
+
       </div>
 
       <div class="notice-box">
@@ -73,28 +74,66 @@ import { products } from '../../data.js';
   </section>
 
   <style>
-    .catalogue-card-clickable {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    /* THREE-COLUMN PRODUCT ARRANGEMENT */
+
+    .catalogue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+      width: 100%;
     }
 
-    .catalogue-card-clickable:hover {
+    /* ENTIRE PRODUCT CARD IS CLICKABLE */
+
+    .catalogue-card-link {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-width: 0;
+      height: 100%;
+      box-sizing: border-box;
+      text-decoration: none !important;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    /* HOVER EFFECT */
+
+    .catalogue-card-link:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
     }
 
-    .catalogue-card-clickable:focus-visible {
+    /* ACCESSIBILITY */
+
+    .catalogue-card-link:focus-visible {
       outline: 3px solid #376b43;
       outline-offset: 4px;
     }
 
-    .catalogue-card-clickable .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    /* PREVENT LONG TEXT FROM OVERFLOWING */
+
+    .catalogue-card-link p {
+      overflow-wrap: anywhere;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 900px) {
+      .catalogue-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      .catalogue-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 

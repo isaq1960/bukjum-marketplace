@@ -1,6 +1,82 @@
 ---
 import BaseLayout from '../layouts/Base.astro';
 ---
-<BaseLayout title="Contact Bukjum" description="Contact Bukjum about recycled material supply, buyer enquiries and quotations."><section class="page-hero"><div class="container"><p class="eyebrow">CONTACT</p><h1>Let's talk<br /><em>materials.</em></h1><p>Contact details are being confirmed. The buyer and supplier enquiry pages are ready to use once the verified Formspree endpoint is configured.</p></div></section><section class="section"><div class="container contact-card"><span class="eyebrow">GENERAL & COMMERCIAL ENQUIRIES</span><strong>Contact address pending confirmation</strong><p>For a quotation, include material type, quantity (minimum 10 tonnes) and delivery location in Nigeria. Add a confirmed email or phone contact before publishing.</p></div></section></BaseLayout>
 
+<BaseLayout title="Contact Bukjum Nigeria Limited | Recycled Materials Marketplace" description="Get in touch with Bukjum Nigeria Limited for recycled plastic materials and wholesale enquiries.">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">CONTACT</p>
+      <h1>Let's talk<br /><em>materials.</em></h1>
+      <p>Get in touch with Bukjum Nigeria Limited for bulk PET, HDPE, and PP flakes, partnerships, and wholesale supply enquiries.</p>
+    </div>
+  </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="enquiry-grid">
+        <!-- Left Column: Official Contact Details -->
+        <div>
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h2>Corporate & Commercial<br /><em>Enquiries.</em></h2>
+          <p class="text-slate-700 mb-6">
+            For quotations, include material type, quantity (minimum 10 tonnes), and delivery location in Nigeria.
+          </p>
+
+          <dl class="supplier-contact-details">
+            <div>
+              <dt>Company</dt>
+              <dd>Bukjum Nigeria Limited</dd>
+            </div>
+            <div>
+              <dt>WhatsApp</dt>
+              <dd><a href="https://wa.me/2348030748480?text=Hello%20Bukjum%2C%20I%20would%20like%20to%20enquire%20about%20recycled%20materials." target="_blank" rel="noopener noreferrer">+234 803 074 8480</a></dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+2348030748480">+234 803 074 8480</a></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:isaq1960@gmail.com">isaq1960@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>Head Office</dt>
+              <dd>No 5, Rock Eternal College Close, Dada Estate, Osogbo, Osun State - Nigeria</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Right Column: Formspree Enquiry Form -->
+        <div class="form-card">
+          <h2>Send an Enquiry</h2>
+          <p class="text-sm text-slate-600 mb-6">Fill out the form below to send your request directly to our team.</p>
+          
+          <!-- ReplaceYOUR_FORMSPREE_ID with your actual Formspree endpoint ID -->
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="name">Your Name</label>
+              <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="Enter your full name">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="email">Email Address</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="name@company.com">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="material">Material & Quantity (Min 10 tonnes)</label>
+              <input type="text" id="material" name="material" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="e.g. PET flakes, 15 tonnes">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="message">Message / Delivery Location</label>
+              <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="Specify your delivery location and requirements..."></textarea>
+            </div>
+
+            <button type="submit" class="button button-primary w-full">Send Enquiry <span>→</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

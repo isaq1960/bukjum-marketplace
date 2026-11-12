@@ -1,3 +1,105 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-hero {
+    @apply bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-900 text-white py-16 sm:py-24;
+  }
+
+  .page-hero h1 {
+    @apply text-4xl sm:text-5xl font-bold tracking-tight mt-3 mb-5 leading-tight;
+  }
+
+  .page-hero h1 em {
+    @apply text-emerald-300 not-italic;
+  }
+
+  .page-hero p {
+    @apply text-lg text-emerald-100 max-w-2xl leading-relaxed;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-widest text-emerald-400;
+  }
+
+  .section .eyebrow {
+    @apply text-emerald-700;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 bg-white;
+  }
+
+  .section h2 {
+    @apply text-3xl font-bold text-slate-900 tracking-tight mb-4;
+  }
+
+  .section h2 em {
+    @apply text-emerald-700 not-italic;
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 shadow-sm;
+  }
+
+  .button-primary {
+    @apply bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-md;
+  }
+
+  .button-secondary {
+    @apply bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-sm;
+  }
+
+  .enquiry-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-12 items-start;
+  }
+
+  .check-list {
+    @apply space-y-3 my-6 text-slate-700;
+  }
+
+  .check-list li {
+    @apply flex items-start gap-3 before:content-['✓'] before:text-emerald-600 before:font-bold;
+  }
+
+  .buyer-note {
+    @apply bg-emerald-50 border-l-4 border-emerald-600 p-5 rounded-r-lg mt-8;
+  }
+
+  .buyer-note strong {
+    @apply block text-emerald-950 font-semibold mb-1;
+  }
+
+  .buyer-note p {
+    @apply text-sm text-emerald-800;
+  }
+
+  .form-card {
+    @apply bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm;
+  }
+
+  .supplier-contact-details {
+    @apply space-y-4 my-6 border-y border-slate-200 py-6;
+  }
+
+  .supplier-contact-details div {
+    @apply grid grid-cols-1 sm:grid-cols-3 gap-1;
+  }
+
+  .supplier-contact-details dt {
+    @apply text-xs font-bold uppercase tracking-wider text-slate-500;
+  }
+
+  .supplier-contact-details dd {
+    @apply sm:col-span-2 text-slate-900 font-medium;
+  }
+
+  .supplier-contact-details a {
+    @apply text-emerald-700 hover:text-emerald-600 underline underline-offset-2;
+  }
+}

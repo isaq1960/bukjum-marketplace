@@ -1,14 +1,17 @@
 ---
 import '../styles/global.css';
 
-const { title = "Bukjum Marketplace", description = "Industrial plastic flakes and recycling marketplace" } = Astro.props;
+const { 
+  title = "Bukjum Materials Marketplace | Recycling Aggregator & Processor in Nigeria & Africa", 
+  description = "Bukjum buys, sells, and processes recycling materials—including plastics (PET, HDPE, PP), paper, glass, and iron—linking buyers and sellers across Osun State, Nigeria, and Africa." 
+} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://marketplace.bukjum.com').href} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://materials.bukjum.com').href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <title>{title}</title>
@@ -16,18 +19,18 @@ const { title = "Bukjum Marketplace", description = "Industrial plastic flakes a
 <body class="bg-white text-gray-800 antialiased min-h-screen flex flex-col">
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="https://marketplace.bukjum.com" class="flex items-center gap-3 text-gray-900 font-bold text-lg no-underline">
+            <a href="https://materials.bukjum.com" class="flex items-center gap-3 text-gray-900 font-bold text-lg no-underline">
                 <div class="bg-green-600 text-white w-9 h-9 flex items-center justify-center rounded-lg">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c4.5-2.3 7-6 7-10.5C19 6.2 16.5 3 12 2 7.5 3 5 6.2 5 10.5 5 15 7.5 18.7 12 21Z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 20c-.3-5.2 1.4-9.2 5.1-12M12 14c-1.2-1.8-2.5-3-4.2-3.8"></path></svg>
                 </div>
                 <span>Bukjum Marketplace</span>
             </a>
             <nav class="hidden md:flex items-center gap-6">
-                <a href="https://marketplace.bukjum.com" class="text-gray-600 hover:text-green-600 font-medium no-underline transition">Home</a>
+                <a href="https://materials.bukjum.com" class="text-gray-600 hover:text-green-600 font-medium no-underline transition">Home</a>
                 <a href="/products/" class="text-gray-600 hover:text-green-600 font-medium no-underline transition">Products</a>
                 <a href="/buyers/" class="text-gray-600 hover:text-green-600 font-medium no-underline transition">For Buyers</a>
                 <a href="/suppliers/" class="text-gray-600 hover:text-green-600 font-medium no-underline transition">For Suppliers</a>
-                <a href="https://bukjum.com" class="text-green-600 font-semibold hover:text-green-700 no-underline transition">Recycling Centre</a>
+                <a href="https://www.bukjum.com" class="text-green-600 font-semibold hover:text-green-700 no-underline transition">Recycling Centre</a>
                 <a href="/contact/" class="text-gray-600 hover:text-green-600 font-medium no-underline transition">Contact</a>
             </nav>
         </div>
@@ -37,12 +40,12 @@ const { title = "Bukjum Marketplace", description = "Industrial plastic flakes a
         <slot />
     </main>
 
-    <footer class="bg-gray-50 border-t border-gray-200 py-10 text-center text-gray-500 text-sm">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>� 2026 Bukjum Global Links. Industrial PP, HDPE, and PET recycling & wholesale marketplace.</p>
+    <footer class="bg-gray-50 border-t border-gray-200 py-10 text-center text-gray-600 text-sm">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-gray-800">© 2026 Bukjum Global Links (Famohd Global Link Nig Ltd). All rights reserved.</p>
+            <p>Buying, selling, processing & aggregating recycling materials (plastics, paper, glass, and iron) across Osun State, Nigeria, and Africa.</p>
+            <p>Head Office: No 1, Oke Awon Street, Ede Road, Egbedi, Osun State, Nigeria | Tel/WhatsApp: <a href="tel:+2348064791798" class="text-green-700 hover:underline">+234 806 479 1798</a> | Email: <a href="mailto:isaq1960@gmail.com" class="text-green-700 hover:underline">isaq1960@gmail.com</a></p>
         </div>
     </footer>
 </body>
 </html>
-
-

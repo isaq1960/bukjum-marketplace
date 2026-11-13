@@ -1,5 +1,18 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bukjum.com"
+        }
+      ],
+      "destination": "https://www.bukjum.com/:path*",
+      "permanent": true
+    }
+  ]
 }

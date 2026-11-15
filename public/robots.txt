@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://materials.bukjum.com/sitemap-index.xml

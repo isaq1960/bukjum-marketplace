@@ -1,0 +1,11 @@
+﻿---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsappButton from '../components/WhatsappButton.astro';
+import '../styles/global.css';
+import '../styles/unified.css';
+const { title = 'Bukjum Materials Marketplace', description = 'Explore recycled materials and request a wholesale quotation from Bukjum.' } = Astro.props;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://materials.bukjum.com';
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta name="theme-color" content="#123e35" /><link rel="canonical" href={canonical} /><title>{title}</title></head><body><Header /><main><slot /></main><Footer /><WhatsappButton /></body></html>

@@ -1,0 +1,7 @@
+export const products = [
+  { slug: 'pp-flakes', name: 'PP flakes', resin: 'Polypropylene (PP)', price: '₦700,000–₦800,000', color: 'mint', summary: 'Bagged, unwashed polypropylene flakes for wholesale and industrial buyers.', detail: 'PP makes up approximately 90% of the founding supplier’s current production. Material is collected, sorted and crushed, then bagged without washing. Buyers should plan for additional cleaning to meet their own manufacturing specifications.' },
+  { slug: 'hdpe-flakes', name: 'HDPE flakes', resin: 'High-density polyethylene (HDPE)', price: '₦600,000–₦650,000', color: 'blue', summary: 'Bagged, unwashed HDPE flakes available for quotation.', detail: 'The founding supplier processes collected HDPE by sorting and crushing. Flakes are sold in bags without washing, so buyers should carry out additional cleaning before use. Exact production split and particle sizes have not been confirmed.' },
+  { slug: 'pet-flakes', name: 'PET flakes', resin: 'Polyethylene terephthalate (PET)', price: '₦550,000–₦650,000', color: 'gold', summary: 'Bagged, unwashed PET flakes available for quotation.', detail: 'The founding supplier processes collected PET by sorting and crushing. Flakes are sold in bags without washing, so buyers should carry out additional cleaning before use. Exact production split and particle sizes have not been confirmed.' }
+];
+
+export const endpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT?.trim() || '';

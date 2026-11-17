@@ -1,45 +1,125 @@
 ---
 import BaseLayout from '../layouts/Base.astro';
+
+const portals = [
+  {
+    title: 'For Industrial Buyers',
+    tag: 'Bulk Procurement',
+    description: 'Source processed and aggregated plastics (PET, HDPE, PP), paper, glass, and iron in bulk quantities (10+ tonnes) across Nigeria and Africa.',
+    href: '/buyers/',
+    cta: 'Enquire as a Buyer',
+    icon: 'factory',
+  },
+  {
+    title: 'For Recycling Suppliers',
+    tag: 'Direct Offtake',
+    description: 'Sell collected plastics, paper, glass, and scrap iron directly to our Osun State processing hub or connect with verified industrial buyers.',
+    href: '/suppliers/',
+    cta: 'Supply Materials',
+    icon: 'truck',
+  },
+  {
+    title: 'Material Processing & Aggregation',
+    tag: 'Quality Assured',
+    description: 'We sort, process, and aggregate recyclable commodities in Osun State to ensure reliable volume and consistent industrial quality.',
+    href: '/products/',
+    cta: 'View Material Catalogue',
+    icon: 'layers',
+  },
+];
 ---
 
-<BaseLayout 
-  title="Recycling Services & Materials Aggregator in Osun State | Bukjum" 
+<BaseLayout
+  title="Recycling Services & Materials Aggregator in Osun State | Bukjum"
   description="Bukjum buys, sells, and processes recycling materials—including plastics (PET, HDPE, PP), paper, glass, and iron—across Osogbo, Ede Road, and Osun State, Nigeria."
 >
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">RECYCLING AGGREGATOR & PROCESSOR — OSOGBO, OSUN STATE</p>
-      <h1>Recycling services & materials<br /><em>processing in Osun State.</em></h1>
-      <p>
-        Welcome to <strong>Bukjum</strong>—your premier recycling and sustainable waste management partner proudly serving <strong>Osun State</strong>. Operating from our hub along Ede Road in Osogbo, we buy, process, and supply high-quality recyclable commodities—including plastics (PET, HDPE, PP), paper, glass, and iron—connecting verified buyers and sellers across Osun, Nigeria, and Africa.
+  <section class="py-6 sm:py-10">
+    <div class="max-w-3xl">
+      <p class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">
+        RECYCLING AGGREGATOR & PROCESSOR — OSOGBO, OSUN STATE
       </p>
-      <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-        <a href="/products/" class="button button-primary">Browse Materials</a>
-        <a href="/buyers/" class="button button-secondary">Request Quotation</a>
+      <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+        Recycling services & materials <span class="text-emerald-700 italic">processing in Osun State.</span>
+      </h1>
+      <p class="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+        Welcome to <strong class="font-semibold text-slate-900">Bukjum</strong>—your premier recycling and sustainable waste management partner proudly serving <strong class="font-semibold text-slate-900">Osun State</strong>. Operating from our hub along Ede Road in Osogbo, we buy, process, and supply high-quality recyclable commodities—including plastics (PET, HDPE, PP), paper, glass, and iron—connecting verified buyers and sellers across Osun, Nigeria, and Africa.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          href="/products/"
+          class="inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+        >
+          Browse Materials
+        </a>
+        <a
+          href="/buyers/"
+          class="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-900 transition hover:border-emerald-600 hover:text-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+        >
+          Request Quotation
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Explore Marketplace Portals</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-        <div style="border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px;">
-          <h3>For Industrial Buyers</h3>
-          <p>Source processed and aggregated plastics (PET, HDPE, PP), paper, glass, and iron in bulk quantities (10+ tonnes) across Nigeria and Africa.</p>
-          <a href="/buyers/">Enquire as a Buyer →</a>
-        </div>
-        <div style="border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px;">
-          <h3>For Recycling Suppliers</h3>
-          <p>Sell collected plastics, paper, glass, and scrap iron directly to our Osun State processing hub or connect with verified industrial buyers.</p>
-          <a href="/suppliers/">Supply Materials →</a>
-        </div>
-        <div style="border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px;">
-          <h3>Material Processing & Aggregation</h3>
-          <p>We sort, process, and aggregate recyclable commodities in Osun State to ensure reliable volume and consistent industrial quality.</p>
-          <a href="/products/">View Material Catalogue →</a>
-        </div>
-      </div>
+  <section class="py-10 sm:py-14 border-t border-slate-100">
+    <div class="mb-8">
+      <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+        Explore Marketplace Portals
+      </h2>
+      <p class="mt-2 text-slate-600">
+        Select your role to buy, supply, or inspect processed recyclable commodities.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {portals.map((portal) => (
+        <article class="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-7 shadow-xs transition duration-200 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-md">
+          <div>
+            <div class="flex items-start justify-between gap-4">
+              <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100 transition group-hover:bg-emerald-600 group-hover:text-white" aria-hidden="true">
+                {portal.icon === 'factory' && (
+                  <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7 4V7l7 4v10M9 17h1m4 0h1" />
+                  </svg>
+                )}
+                {portal.icon === 'truck' && (
+                  <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v10H3V7Zm11 3h4l3 3v4h-7v-7Z" />
+                    <circle cx="7.5" cy="17.5" r="2" />
+                    <circle cx="17.5" cy="17.5" r="2" />
+                  </svg>
+                )}
+                {portal.icon === 'layers' && (
+                  <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m12 3 9 4.5-9 4.5-9-4.5L12 3Zm0 9 9 4.5-9 4.5-9-4.5L12 12Z" />
+                  </svg>
+                )}
+              </span>
+
+              <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+                {portal.tag}
+              </span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-extrabold tracking-tight text-slate-900">
+              {portal.title}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+              {portal.description}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-2">
+            <a
+              href={portal.href}
+              class="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 underline decoration-emerald-400 decoration-2 underline-offset-4 transition hover:text-emerald-800"
+            >
+              <span>{portal.cta}</span>
+              <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>

@@ -1,15 +1,16 @@
----
+﻿---
 import BaseLayout from '../../layouts/Base.astro';
+import { products, endpoint } from '../../data.js';
 ---
-<BaseLayout 
-  title="Buyer enquiries & quotations | Bukjum Recycling Aggregator" 
-  description="Contact Bukjum in Osun State, Nigeria for bulk quotations on recycled plastics (PP, HDPE, PET), paper, glass, and iron across Nigeria and Africa."
+<BaseLayout
+  title="Request a Quotation | Bukjum Materials Marketplace"
+  description="Request bulk wholesale quotes for recycled plastics (PP, HDPE, PET), OCC cardboard, cullet glass, and scrap iron in Osun State, Nigeria."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">FOR INDUSTRIAL & WHOLESALE BUYERS</p>
-      <h1>Let's find the right<br /><em>recycled material for you.</em></h1>
-      <p>Based in Osun State, Nigeria, Bukjum processes and aggregates recycled plastics, paper, glass, and iron—connecting verified suppliers with buyers across Nigeria and Africa.</p>
+      <h1>Request a quotation for<br /><em>recycled commodities.</em></h1>
+      <p>Based in Osun State, Nigeria, Bukjum aggregates and processes verified industrial recycling materials with dispatch across Nigeria and Africa.</p>
     </div>
   </section>
   <section class="section">
@@ -18,28 +19,81 @@ import BaseLayout from '../../layouts/Base.astro';
         <p class="eyebrow">BEFORE YOU ENQUIRE</p>
         <h2>Good to know<br /><em>up front.</em></h2>
         <ul class="check-list">
-          <li>We supply processed and aggregated recycling materials: plastics (PP, HDPE, PET flakes), paper, glass, and iron.</li>
+          <li>We supply processed and aggregated recycling streams: plastics (PP, HDPE, PET flakes), paper/cardboard (OCC), glass cullet, and scrap iron.</li>
           <li>Minimum order is 10 tonnes for bulk industrial supply.</li>
-          <li>Indicative prices are per tonne; final pricing is confirmed by quotation.</li>
-          <li>Plastic flakes are bagged, unwashed, and ready for industrial processing.</li>
-          <li>Delivery and logistics coordination available across Osun State, Nigeria, and West Africa.</li>
+          <li>Indicative prices are per tonne; final pricing is confirmed by formal quotation.</li>
+          <li>Plastic flakes are bagged and unwashed, ready for industrial processing.</li>
+          <li>Delivery and logistics coordination available across Nigeria and West Africa.</li>
         </ul>
-        <div class="buyer-note">
-          <strong>Trusted industrial supply</strong>
-          <p>Headquartered in Osun State, connecting local collectors and processors with major manufacturing firms in Lagos, Ogun, and across Africa.</p>
+        <div class="buyer-note" style="margin-top: 24px;">
+          <strong>Direct WhatsApp Support</strong>
+          <p style="margin-top: 8px;">Prefer to chat directly? Reach our commercial desk on WhatsApp: <a href="https://wa.me/2348064791798?text=Hello%20Bukjum,%20I%20would%20like%20a%20quotation%20for%20recycled%20materials." target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: #047857; text-decoration: underline;">+234 806 479 1798</a></p>
         </div>
       </div>
       <div class="form-card buyer-contact-card">
-        <h2>Request a quotation</h2>
-        <p>Contact the Bukjum team with your material (plastic, paper, glass, or iron), quantity (minimum 10 tonnes), intended use, and delivery location.</p>
-        <dl class="supplier-contact-details">
-          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/2348064791798?text=Hello%20Bukjum%2C%20I%20would%20like%20a%20quotation%20for%20recycled%20materials." target="_blank" rel="noopener noreferrer">+2348064791798</a></dd></div>
-          <div><dt>Phone</dt><dd><a href="tel:+2348064791798">+2348064791798</a><br /><a href="tel:+2348161105054">+2348161105054</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:info@bukjum.com">info@bukjum.com</a></dd></div>
-          <div><dt>Head office</dt><dd>No 1, Oke Awon Street, Ede Road, Egbedi, Osun State - Nigeria</dd></div>
-        </dl>
-        <a class="button button-primary" href="https://wa.me/2348064791798?text=Hello%20Bukjum%2C%20I%20would%20like%20a%20quotation%20for%20recycled%20materials." target="_blank" rel="noopener noreferrer">Request a quotation on WhatsApp <span>↗</span></a>
+        <h2>Material Enquiry Form</h2>
+        <p>Complete the form below to receive a formal quotation for your required tonnage and delivery location.</p>
+        {endpoint ? (
+          <form action={endpoint} method="POST" class="mt-6 space-y-4" id="buyer-form">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true" />
+            <div>
+              <label for="buyer-name" class="block text-sm font-bold text-gray-800 mb-1">Full Name / Company Name *</label>
+              <input type="text" id="buyer-name" name="name" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="e.g. Acme Manufacturing Ltd" />
+            </div>
+            <div>
+              <label for="buyer-phone" class="block text-sm font-bold text-gray-800 mb-1">Phone / WhatsApp Number *</label>
+              <input type="tel" id="buyer-phone" name="phone" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="+234 800 000 0000" />
+            </div>
+            <div>
+              <label for="buyer-material" class="block text-sm font-bold text-gray-800 mb-1">Required Material *</label>
+              <select id="buyer-material" name="material" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20 bg-white">
+                <option value="" disabled selected>Select a material...</option>
+                {products.map((p) => (
+                  <option value={p.name}>{p.name} ({p.category})</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="buyer-tonnage" class="block text-sm font-bold text-gray-800 mb-1">Required Quantity (Minimum 10 tonnes) *</label>
+              <input type="text" id="buyer-tonnage" name="tonnage" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="e.g. 20 tonnes per month" />
+            </div>
+            <div>
+              <label for="buyer-location" class="block text-sm font-bold text-gray-800 mb-1">Delivery Destination (State / Country) *</label>
+              <input type="text" id="buyer-location" name="location" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="e.g. Ikeja, Lagos State" />
+            </div>
+            <div>
+              <label for="buyer-details" class="block text-sm font-bold text-gray-800 mb-1">Additional Specifications or Intended Use</label>
+              <textarea id="buyer-details" name="details" rows="3" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="Describe your processing requirements..."></textarea>
+            </div>
+            <button type="submit" class="button button-primary w-full justify-center mt-2">
+              Submit Quotation Request →
+            </button>
+          </form>
+        ) : (
+          <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm">
+            <p class="font-bold">Form endpoint not configured.</p>
+          </div>
+        )}
       </div>
     </div>
   </section>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const materialSlug = params.get("material");
+    if (materialSlug) {
+      const selectElem = document.getElementById("buyer-material");
+      if (selectElem) {
+        const slugMap = {
+          "pp-flakes": "PP Flakes",
+          "hdpe-flakes": "HDPE Flakes",
+          "pet-flakes": "PET Flakes",
+          "occ-cardboard": "Paper & Cardboard (OCC)",
+          "cullet-glass": "Cullet & Glass",
+          "scrap-iron": "Ferrous & Scrap Iron"
+        };
+        const targetName = slugMap[materialSlug];
+        if (targetName) { selectElem.value = targetName; }
+      }
+    }
+  </script>
 </BaseLayout>

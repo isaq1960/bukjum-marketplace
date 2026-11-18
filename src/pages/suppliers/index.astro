@@ -1,12 +1,16 @@
----
+﻿---
 import BaseLayout from '../../layouts/Base.astro';
+import { products, endpoint } from '../../data.js';
 ---
-<BaseLayout title="Supply recycled materials with Bukjum" description="Contact Bukjum to discuss recycled plastic supply, processing, quantities and location.">
+<BaseLayout
+  title="Supply Recycled Materials | Bukjum Materials Marketplace"
+  description="Partner with Bukjum to supply recycled plastics, paper, glass, and scrap iron from across Nigeria."
+>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">FOR MATERIAL SUPPLIERS</p>
       <h1>Bring your supply.<br /><em>Build a connection.</em></h1>
-      <p>Bukjum is building a marketplace that connects recycled material suppliers with industrial buyers.</p>
+      <p>Bukjum connects verified material collectors, aggregators, and recycling plants with large-scale industrial manufacturing buyers.</p>
     </div>
   </section>
   <section class="section">
@@ -14,24 +18,77 @@ import BaseLayout from '../../layouts/Base.astro';
       <div>
         <p class="eyebrow">HOW IT WORKS</p>
         <h2>Reliable details<br /><em>help business move.</em></h2>
-        <p class="body-copy">Tell us what material you have, how it is processed, the quantities you can supply and where it is located. Accurate details help us match supply with buyer requirements.</p>
+        <p class="body-copy">Tell us what material you have, how it is processed, your available monthly volume, and your location. Accurate details help us match your supply with industrial buyers.</p>
         <div class="supplier-facts">
           <div><strong>01</strong><span>Share your materials and processing steps</span></div>
           <div><strong>02</strong><span>Tell us your volume, packaging and location</span></div>
-          <div><strong>03</strong><span>We follow up to understand buyer fit</span></div>
+          <div><strong>03</strong><span>We follow up to confirm commercial terms</span></div>
         </div>
       </div>
       <div class="form-card supplier-contact-card">
-        <h2>Contact the Bukjum team</h2>
-        <p>Use the same contact details shown at the Bukjum Recycling Centre. Tell us what materials you supply, how they are processed, your monthly volume, packaging, and location.</p>
-        <dl class="supplier-contact-details">
-          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/2348064791798?text=Hello%20Bukjum%2C%20I%20would%20like%20to%20discuss%20supplying%20recycled%20materials." target="_blank" rel="noopener noreferrer">+2348064791798</a></dd></div>
-          <div><dt>Phone</dt><dd><a href="tel:+2348064791798">+2348064791798</a><br /><a href="tel:+2348161105054">+2348161105054</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:info@bukjum.com">info@bukjum.com</a></dd></div>
-          <div><dt>Head office</dt><dd>No 1, Oke Awon Street, Ede Road, Egbedi, Osun State - Nigeria</dd></div>
-        </dl>
-        <a class="button button-primary" href="https://wa.me/2348064791798?text=Hello%20Bukjum%2C%20I%20would%20like%20to%20discuss%20supplying%20recycled%20materials." target="_blank" rel="noopener noreferrer">Message us on WhatsApp <span>↗</span></a>
+        <h2>Material Supply Offer Form</h2>
+        <p>Submit your stock details to our commercial aggregation team.</p>
+        {endpoint ? (
+          <form action={endpoint} method="POST" class="mt-6 space-y-4" id="supplier-form">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true" />
+            <div>
+              <label for="supplier-name" class="block text-sm font-bold text-gray-800 mb-1">Full Name / Business Name *</label>
+              <input type="text" id="supplier-name" name="name" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="e.g. GreenCycle Ventures" />
+            </div>
+            <div>
+              <label for="supplier-phone" class="block text-sm font-bold text-gray-800 mb-1">Phone / WhatsApp Number *</label>
+              <input type="tel" id="supplier-phone" name="phone" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="+234 800 000 0000" />
+            </div>
+            <div>
+              <label for="supplier-material" class="block text-sm font-bold text-gray-800 mb-1">Material Supplied *</label>
+              <select id="supplier-material" name="material" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20 bg-white">
+                <option value="" disabled selected>Select a material...</option>
+                {products.map((p) => (
+                  <option value={p.name}>{p.name} ({p.category})</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="supplier-volume" class="block text-sm font-bold text-gray-800 mb-1">Available Quantity / Monthly Volume *</label>
+              <input type="text" id="supplier-volume" name="volume" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="e.g. 15 tonnes monthly" />
+            </div>
+            <div>
+              <label for="supplier-location" class="block text-sm font-bold text-gray-800 mb-1">Pickup Location (Town & State) *</label>
+              <input type="text" id="supplier-location" name="location" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="e.g. Osogbo, Osun State" />
+            </div>
+            <div>
+              <label for="supplier-details" class="block text-sm font-bold text-gray-800 mb-1">Processing & Packaging Details</label>
+              <textarea id="supplier-details" name="details" rows="3" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/20" placeholder="Describe sorting, crushing, washing, or bagging format..."></textarea>
+            </div>
+            <button type="submit" class="button button-primary w-full justify-center mt-2">
+              Submit Supply Offer →
+            </button>
+          </form>
+        ) : (
+          <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm">
+            <p class="font-bold">Form endpoint not configured.</p>
+          </div>
+        )}
       </div>
     </div>
   </section>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const materialSlug = params.get("material");
+    if (materialSlug) {
+      const selectElem = document.getElementById("supplier-material");
+      if (selectElem) {
+        const slugMap = {
+          "pp-flakes": "PP Flakes",
+          "hdpe-flakes": "HDPE Flakes",
+          "pet-flakes": "PET Flakes",
+          "occ-cardboard": "Paper & Cardboard (OCC)",
+          "cullet-glass": "Cullet & Glass",
+          "scrap-iron": "Ferrous & Scrap Iron"
+        };
+        const targetName = slugMap[materialSlug];
+        if (targetName) { selectElem.value = targetName; }
+      }
+    }
+  </script>
 </BaseLayout>

@@ -5,6 +5,44 @@ const {
   title = "Bukjum Materials Marketplace | Recycling Aggregator & Processor in Nigeria & Africa",
   description = "Bukjum Nig. Ltd buys, sells, and processes recycling materials—including plastics (PET, HDPE, PP), paper, glass, and iron—linking buyers and sellers across Osun State, Nigeria, and Africa."
 } = Astro.props;
+
+const marketplaceSchema = {
+  "@context": "https://schema.org",
+  "@type": ["RecyclingCenter", "WholesaleStore", "LocalBusiness"],
+  "name": "Bukjum Materials Marketplace",
+  "legalName": "Bukjum Nig. Ltd",
+  "url": "https://materials.bukjum.com",
+  "logo": "https://materials.bukjum.com/favicon.svg",
+  "description": description,
+  "telephone": "+2348064791798",
+  "email": "info@bukjum.com",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Bukjum Recycling Center",
+    "url": "https://bukjum.com"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No 1, Oke Awon Street, Ede Road, Egbedi",
+    "addressLocality": "Osogbo",
+    "addressRegion": "Osun State",
+    "addressCountry": "NG"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 7.7565,
+    "longitude": 4.4962
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Osogbo" },
+    { "@type": "State", "name": "Osun State" },
+    { "@type": "Country", "name": "Nigeria" },
+    { "@type": "Continent", "name": "Africa" }
+  ],
+  "sameAs": [
+    "https://bukjum.com"
+  ]
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +53,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(marketplaceSchema)} />
 </head>
 <body class="bg-white text-gray-800 antialiased min-h-screen flex flex-col">
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
@@ -27,6 +66,9 @@ const {
                     </div>
                     <span>Bukjum Marketplace</span>
                 </a>
+
+                <!-- Vertical divider separator -->
+                <span class="hidden h-6 w-px bg-gray-300 lg:block" aria-hidden="true"></span>
 
                 <!-- Recycling Centre pill button next to logo -->
                 <a 

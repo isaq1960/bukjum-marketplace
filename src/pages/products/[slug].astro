@@ -10,12 +10,31 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.detail,
+  material: product.resin,
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'NGN',
+    lowPrice: product.priceLow,
+    highPrice: product.priceHigh,
+    url: `https://materials.bukjum.com/products/${product.slug}/`,
+    seller: {
+      '@type': 'Organization',
+      name: 'Bukjum Nig. Ltd'
+    }
+  }
+};
 ---
 
 <BaseLayout
   title={`${product.name} | Bukjum`}
   description={`${product.summary} Indicative price ${product.price} per tonne, subject to quotation.`}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <section class="page-hero product-hero">
     <div class="container">
       <a class="back-link" href="/products/">← All materials</a>
